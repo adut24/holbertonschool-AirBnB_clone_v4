@@ -1,8 +1,6 @@
 $.when($.ready).then(function () {
-  dictAmenitiesId = {}
-  console.log("hello")
+  const dictAmenitiesId = {};
   $('[type="checkbox"]').click(function () {
-    console.log("click!");
     const name = $(this).attr('data-name');
     const id = $(this).attr('data-id');
     if ($(this).is(':checked')) {
@@ -10,8 +8,8 @@ $.when($.ready).then(function () {
     } else {
       delete dictAmenitiesId[id];
     }
-    listNameAmenities = [];
-    for (const [key, value] of Object.entries(dictAmenitiesId)) {
+    const listNameAmenities = [];
+    for (const [, value] of Object.entries(dictAmenitiesId)) {
       listNameAmenities.push(value);
     }
     $('.amenities h4').text(listNameAmenities.join(', '));
