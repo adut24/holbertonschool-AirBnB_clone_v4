@@ -28,10 +28,10 @@ $.when($.ready).then(function () {
     headers: { 'Content-Type': 'application/json' },
     dataType: 'json',
     success: function (response) {
-      for (let i = 0; i < 2; i++) {
+      for (let i = 0; i < response.length; i++) {
         $('.places').append('<article></article>');
         $('article:last').append('<div></div>');
-        $('article div').addClass('title_box');
+        $('article:last div').addClass('title_box');
         $('.title_box:last').append('<h2>' + response[i].name + '</h2>');
         $('.title_box:last').append('<div></div>');
         $('.title_box:last div').addClass('price_by_night');
@@ -49,7 +49,7 @@ $.when($.ready).then(function () {
         $('.number_bathrooms:last').append(response[i].number_bathrooms + ' Bathroom');
         $('article:last').append('<div></div>');
         $('article:last div:last').addClass('description');
-        $('.description').append(response[i].description);
+        $('.description:last').append(response[i].description);
       }
     }
   });

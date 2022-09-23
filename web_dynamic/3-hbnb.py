@@ -4,7 +4,6 @@ from models import storage
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
-from models.place import Place
 from os import environ
 import uuid
 from flask import Flask, render_template
@@ -32,13 +31,9 @@ def hbnb():
     amenities = storage.all(Amenity).values()
     amenities = sorted(amenities, key=lambda k: k.name)
 
-    places = storage.all(Place).values()
-    places = sorted(places, key=lambda k: k.name)
-
     return render_template('3-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
-                           places=places,
                            cache_id=uuid.uuid4())
 
 
