@@ -14,11 +14,11 @@ $.when($.ready).then(function () {
     }
     $('.amenities h4').text(listNameAmenities.join(', '));
   });
-  $.get('http://localhost:5001/api/v1/status/', function (data) {
-    if (typeof data !== 'object') {
-      $('#api_status').removeClass('available');
-    } else {
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
+    if (typeof data === 'object' && data.status === 'OK') {
       $('#api_status').addClass('available');
+    } else {
+      $('#api_status').removeClass('available');
     }
   });
 });
